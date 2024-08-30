@@ -1,5 +1,5 @@
 import { useState } from "react"
-import logo from '../../public/images/jobportal.png'
+import logo from '/images/jobportal.png'
 import { Link, NavLink } from "react-router-dom";
 import { RiMenu3Line } from "react-icons/ri";
 import { IoCloseSharp } from "react-icons/io5";
