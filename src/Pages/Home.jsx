@@ -3,6 +3,7 @@ import Banner from "../components/Banner";
 import Card from "../components/Card";
 import Jobs from "./Jobs";
 import Sidebar from "../sidebar/Sidebar";
+import NewsLetter from "../components/NewsLetter";
 
 
 const Home = () => {
@@ -139,7 +140,7 @@ const Home = () => {
 
 
             {/* right side */}
-            <div className="bg-white p-4 rounded">Right</div>
+            <div className="bg-white p-4 rounded"><NewsLetter /></div>
         </div>
 
     </div>
