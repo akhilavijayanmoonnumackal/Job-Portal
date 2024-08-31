@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Banner from "../components/Banner";
-import { data } from "autoprefixer";
 import Card from "../components/Card";
 import Jobs from "./Jobs";
 import Sidebar from "../sidebar/Sidebar";
@@ -116,9 +115,9 @@ const Home = () => {
                 {
                     result.length > 0 ? (
                         <div className="flex justify-center mt-4 space-x-8">
-                            <button>Previous</button>
-                            <span>Page {currentPage} of {Math.ceil(filteredItems.length / itemsPerPage)}</span>
-                            <button>Next</button>
+                            <button onClick={prevPage} disabled={currentPage === 1} className="hover:underline">Previous</button>
+                            <span className="mx-2">Page {currentPage} of {Math.ceil(filteredItems.length / itemsPerPage)}</span>
+                            <button onClick={nextPage} disabled={currentPage === Math.ceil(filteredItems.length / itemsPerPage)} className="hover:underline">Next</button>
 
                         </div>
                     ) : ""
