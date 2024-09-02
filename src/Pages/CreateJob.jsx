@@ -6,13 +6,26 @@ const CreateJob = () => {
     const [ selectedOptions, setSelectedOptions] = useState(null);
     const {
         register,
-        handleSubmit,
+        handleSubmit,reset,
         formState: { errors },
       } = useForm()
     
       const onSubmit = (data) => {
         data.skills = selectedOptions;
-        console.log(data);
+        // console.log(data);
+        fetch("http://localhost:5000/post-a-job", {
+            method: "POST",
+            headers: {"content-type" : "application/json"},
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then((result) => {
+            console.log(result);
+            if(result.acknowledged === true) {
+                alert("Job Posted Successfully")
+            }
+            reset()
+        })
     }
 
     const options = [
@@ -123,7 +136,7 @@ const CreateJob = () => {
                         <label className="block mb-2 text-lg">Experience Level</label>
                         <select {...register("experienceLevel")} className="create-job-input">
                             <option value="">Choose your experience</option>
-                            <option value="NoExperience">Any experience</option>
+                            <option value="NoExperience">Hourly</option>
                             <option value="Internship">Internship</option>
                             <option value="Work remotely">Work remotely</option>
                         </select>
@@ -156,7 +169,7 @@ const CreateJob = () => {
                     <div className="lg:w-1/2 w-full">
                         <label className="block mb-2 text-lg">Employment Type</label>
                         <select {...register("employmentType")} className="create-job-input">
-                            <option value="">Choose your experience</option>
+                            <option value="">Select your job type</option>
                             <option value="Full-time">Full-time</option>
                             <option value="Part-time">Part-time</option>
                             <option value="Temporary">Temporary</option>
