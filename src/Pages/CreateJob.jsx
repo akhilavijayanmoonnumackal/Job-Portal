@@ -10,23 +10,45 @@ const CreateJob = () => {
         formState: { errors },
       } = useForm()
     
-      const onSubmit = (data) => {
-        data.skills = selectedOptions;
-        // console.log(data);
-        fetch("http://localhost:5000/post-a-job", {
+    //   const onSubmit = (data) => {
+    //     data.skills = selectedOptions;
+    //     fetch("http://localhost:5000/api/jobs/post-a-job", {
+    //         method: "POST",
+    //         headers: {"content-type" : "application/json"},
+    //         body: JSON.stringify(data)
+    //     })
+    //     .then(res => res.json())
+    //     .then((result) => {
+    //         console.log(result);
+    //         if(result.acknowledged === true) {
+    //             alert("Job Posted Successfully")
+    //         }
+    //         reset()
+    //     })
+    // }
+    const onSubmit = (data) => {
+        if (selectedOptions) {
+          data.skills = selectedOptions.map(option => option.value);
+        }
+        fetch("http://localhost:5000/api/jobs/post-a-job", {
             method: "POST",
-            headers: {"content-type" : "application/json"},
-            body: JSON.stringify(data)
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(data),
         })
         .then(res => res.json())
         .then((result) => {
             console.log(result);
-            if(result.acknowledged === true) {
-                alert("Job Posted Successfully")
+            if (result._id) {  // instead of checking `result.acknowledged`
+                alert("Job Posted Successfully");
             }
-            reset()
+            reset();
         })
-    }
+        .catch((err) => {
+          console.error('Error:', err);
+          alert('Failed to post the job.');
+        });
+      };
+      
 
     const options = [
         { value: "JavaScript", label: "JavaScript" },

@@ -13,7 +13,7 @@ const MyJobs = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`http://localhost:5000/myJobs/hr@travancoreanalytics.com`)
+        fetch(`http://localhost:5000/api/jobs/my-jobs/hr@travancoreanalytics.com`)
         .then((res) => res.json())
         .then((data) => {
             setJobs(data);
@@ -48,15 +48,19 @@ const MyJobs = () => {
 
     const handleDelete = (id) => {
         // console.log("iddi", id);
-        fetch(`http://localhost:5000/job/${id}`, {
+        fetch(`http://localhost:5000/api/jobs/delete-job/${id}`, {
             method: "DELETE"
         })
-        .then((res) => res.json)
+        .then((res) => res.json())
         .then((data) => {
             if(data.acknowledged === true) {
-                alert("Job Deleted Successfully")
+                alert("Job Deleted Successfully");
+                setJobs(jobs.filter(job => job._id !== id));
             }
         })
+        .catch((error) => {
+            console.error("Error deleting job:", error);
+        });
         
     }
     

@@ -15,12 +15,23 @@ const Home = () => {
 
     useEffect(() => {
         setIsLoading(true);
-        fetch("http://localhost:5000/all-jobs").then(res => res.json()).then(data => {
+        fetch("http://localhost:5000/api/jobs/all-jobs")
+        .then(res =>{
+            if (!res.ok) {
+                throw new Error("Failed to fetch jobs");
+            }
+            return res.json();
+        }).then(data => {
             // console.log(data);
+            console.log("Jobs data:", data);
             setJobs(data);
             setIsLoading(false);
             
         })
+        .catch(error => {
+            console.error("Error fetching jobs:", error);
+            setIsLoading(false);
+        });
     },[])
     // console.log(jobs);
     
