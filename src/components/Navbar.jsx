@@ -19,10 +19,10 @@ const Navbar = () => {
             path: '/my-job',
             title: 'My Jobs',
         },
-        { 
-            path: '/salary',
-            title: 'Salary Estimate',
-        },
+        // { 
+        //     path: '/salary',
+        //     title: 'Salary Estimate',
+        // },
         { 
             path: '/post-a-job',
             title: 'Post a Job',

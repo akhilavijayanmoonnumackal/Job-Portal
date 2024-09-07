@@ -205,9 +205,29 @@ const CreateJob = () => {
                     <textarea 
                     className="w-full pl-3 py-1.5 focus:outline-none placeholder:text-gray-400"
                     rows={6}
-                    defaultValue={"It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."}
-                    placeholder="Job Description"
+                    // defaultValue={"It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."}
+                    placeholder="Eg: Verteil Technologies is at the forefront of revolutionizing the traditional airline distribution."
                     {...register("description")} />
+                </div>
+
+                {/* 8th row */}
+                <div className="w-full">
+                    <label className="block mb-2 text-lg">Roles & Responsibilities</label>
+                    <textarea 
+                    className="w-full pl-3 py-1.5 focus:outline-none placeholder:text-gray-400"
+                    rows={6}
+                    placeholder="Eg: Ensure strict adherence to all Indian corporate laws and regulations, specifically Companies Act, 2013 as well as legal requirements pertinent to foreign investors stressing on FEMA compliances."
+                    {...register("roles")} />
+                </div>
+
+                {/* 9th row */}
+                <div className="w-full">
+                    <label className="block mb-2 text-lg">Requirements</label>
+                    <textarea 
+                    className="w-full pl-3 py-1.5 focus:outline-none placeholder:text-gray-400"
+                    rows={6}
+                    placeholder="Eg: Detail-oriented with exceptional organizational and time management abilities."
+                    {...register("requirements")} />
                 </div>
 
                 {/* last row */}
